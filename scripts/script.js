@@ -91,6 +91,24 @@ const showFilm = (element, poster, title, year, ID) => {
   </div>
 </div>
   `;
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animated");
+        }
+      });
+    },
+    {
+      threshold: 0.05,
+    }
+  );
+
+  const filmElements = document.querySelectorAll(".card");
+
+  filmElements.forEach((element) => {
+    observer.observe(element);
+  });
 };
 
 document.querySelector(".results").addEventListener("click", function (event) {

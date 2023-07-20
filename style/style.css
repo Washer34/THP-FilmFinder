@@ -41,3 +41,15 @@ body {
   right: 10px;
   cursor: pointer;
 }
+
+.animated {
+  position: relative;
+  animation-name: right-left;
+  animation-duration: 2s;
+}
+
+@keyframes right-left {
+  0%   {left:-2000px; top:0px;}
+  50%  {left:200px; top:0px;}
+  100% {left:0px; top:0px;}
+}
