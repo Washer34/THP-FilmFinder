@@ -77,32 +77,20 @@ const showFilmDetails = async (filmID) => {
 const showFilm = (element, poster, title, year, ID) => {
   element.innerHTML += `
   <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src=${poster} class="img-fluid rounded-start">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">${title}</h5>
-        <p class="card-text">${year}</p>
-        <button class="btn btn-primary show-details" data-film-id="${ID}">Voir les détails</button>
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src=${poster} class="img-fluid rounded-start">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">${title}</h5>
+          <p class="card-text">${year}</p>
+          <button class="btn btn-primary show-details" data-film-id="${ID}">Voir les détails</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
   `;
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animated");
-        }
-      });
-    },
-    {
-      threshold: 0.05,
-    }
-  );
 
   const filmElements = document.querySelectorAll(".card");
 
@@ -130,3 +118,16 @@ researchButton.addEventListener("click", function (event) {
 
   getFilms(element, researchFormat);
 });
+
+const observer = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animated");
+      }
+    });
+  },
+  {
+    threshold: 0.0,
+  }
+);
